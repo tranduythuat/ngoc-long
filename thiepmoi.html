@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="./css/style01.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="cards">
+            <div class="card active" id="card-default">
+                <div class="title">
+                    <p class="text-1">say</p>
+                    <p class="text-2">yes</p>
+                    <p class="text-3">forever</p>
+                </div>
+                <div class="letter-img">
+                    <img src="./images/g272.png" alt="Letter image">
+                </div>
+                <div class="main-text">
+                    <p class="subtext">thiệp mời tham dự tiệc cưới</p>
+                    <h3 class="name-couple">Ánh Ngọc & Hoàng Long</h3>
+                </div>
+                <div class="icons">
+                    <button onclick="showCard('location')">Thời gian & địa điểm</button>
+                    <button onclick="showCard('map')">Bản đồ</button>
+                    <button onclick="showCard('album')">Album</button>
+                    <button onclick="showCard('rsvp')">Xác nhận tham dự</button>
+                    <button onclick="showCard('qrcode')">Xác nhận tham dự</button>
+                </div>
+            </div>
+
+            <div class="card" id="location" style="background-color: blue;">
+                <h2>Thời gian & địa điểm</h2>
+                <p>17h00 | 12.10.2025 <br> Trống Đồng Palace</p>
+                <button onclick="backToDefault()">Quay lại</button>
+            </div>
+
+            <div class="card" id="map" style="background-color: yellow;">
+                <h2>Thời gian & địa điểm</h2>
+                <p>17h00 | 12.10.2025 <br> Trống Đồng Palace</p>
+                <button onclick="backToDefault()">Quay lại</button>
+            </div>
+
+            <div class="card" id="album" style="background-color: pink;">
+                <h2>Bản đồ</h2>
+                <p>Địa chỉ: Số 02 Láng Yên, Hà Nội</p>
+                <button onclick="backToDefault()">Quay lại</button>
+            </div>
+
+            <div class="card" id="rsvp" style="background-color: green;">
+                <h2>Xác nhận tham dự</h2>
+                <p>Vui lòng để lại thông tin của bạn.</p>
+                <button onclick="backToDefault()">Quay lại</button>
+            </div>
+            <div class="card" id="qrcode" style="background-color: salmon;">
+                <h2>Xác nhận tham dự</h2>
+                <p>Vui lòng để lại thông tin của bạn.</p>
+                <button onclick="backToDefault()">Quay lại</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        console.log('tst')
+        let currentCard = "card-default";
+    
+        // Hàm chuyển card
+        function showCard(id) {
+          if (id === currentCard) return;
+    
+          let oldCard = document.getElementById(currentCard);
+          let newCard = document.getElementById(id);
+    
+          // fade out card cũ
+          gsap.to(oldCard, {
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.4,
+            onComplete: () => {
+              oldCard.classList.remove("active");
+              gsap.set(oldCard, {opacity: 1, scale: 1, display: "none"});
+            }
+          });
+    
+          // fade in card mới
+          newCard.classList.add("active");
+          gsap.fromTo(newCard,
+            {opacity: 0, scale: 0.95, display: "flex"},
+            {opacity: 1, scale: 1, duration: 0.4}
+          );
+    
+          currentCard = id;
+        }
+    
+        // Hàm back về card mặc định
+        function backToDefault() {
+          showCard("card-default");
+        }
+    </script>
+</body>
+
+</html>
