@@ -107,6 +107,7 @@ body {
     display: none;
     color: var(--text-color);
     background-color: #fff;
+    padding: 10px;
 }
 
 .card.active { 
@@ -340,7 +341,7 @@ body {
 
 #album h2 {
     padding: 20px 0;
-    font-family: 'HLT JANEAUST', sans-serif;
+    font-family: 'BEAUTIQUEDISPLAY', sans-serif;
     font-size: 46px;
     font-weight: 300;
 }
@@ -348,7 +349,7 @@ body {
 #album .album-container {
     column-count: 2;
     column-gap: 8px;
-    padding: 8px;
+    padding: 20px;
     max-width: 430px;
     margin: auto;
     /* overflow-y: auto;  */
