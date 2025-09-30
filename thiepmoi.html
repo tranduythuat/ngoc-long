@@ -26,12 +26,42 @@
                     <h3 class="name-couple">Ánh Ngọc & Hoàng Long</h3>
                 </div>
                 <div class="icons">
-                    <button onclick="showCard('location')">Thời gian & địa điểm</button>
-                    <button onclick="showCard('map')">Bản đồ</button>
-                    <button onclick="showCard('album')">Album</button>
-                    <button onclick="showCard('rsvp')">Xác nhận tham dự</button>
-                    <button onclick="showCard('qrcode')">Xác nhận tham dự</button>
+                    <div class="icon">
+                        <div class="box-img" onclick="showCard('location')">
+                            <img src="./images/icons/icon1.png" alt="">
+                        </div>
+                        <p class="icon-text">Thơi gian </br> địa điểm</p>
+                    </div>
+                    <div class="icon">
+                        <div class="box-img">
+                            <img src="./images/icons/icon2.png" alt="">
+                        </div>
+                        <p class="icon-text">Bản đồ </br>/Maps/</p>
+                    </div>
+                    <div class="icon">
+                        <div class="box-img" onclick="showCard('album')">
+                            <img src="./images/icons/icon3.png" alt="">
+                        </div>
+                        <p class="icon-text">Album</br> ảnh cưới</p>
+                    </div>
+                    <div class="icon">
+                        <div class="box-img" onclick="showCard('rsvp')">
+                            <img src="./images/icons/icon4.png" alt="">
+                        </div>
+                        <p class="icon-text">Xác nhận</br>tham dự</p>
+                    </div>
+                    <div class="icon">
+                        <div class="box-img" onclick="showCard('qrcode')">
+                            <img src="./images/icons/icon5.png" alt="">
+                        </div>
+                        <p class="icon-text">Mừng</br>cưới</p>
+                    </div>
                 </div>
+                <!-- <button onclick="showCard('location')">Thời gian & địa điểm</button>
+                <button onclick="showCard('map')">Bản đồ</button>
+                <button onclick="showCard('album')">Album</button>
+                <button onclick="showCard('rsvp')">Xác nhận tham dự</button>
+                <button onclick="showCard('qrcode')">Xác nhận tham dự</button> -->
             </div>
 
             <div class="card" id="location" style="background-color: blue;">
@@ -52,10 +82,38 @@
                 <button onclick="backToDefault()">Quay lại</button>
             </div>
 
-            <div class="card" id="rsvp" style="background-color: green;">
-                <h2>Xác nhận tham dự</h2>
-                <p>Vui lòng để lại thông tin của bạn.</p>
-                <button onclick="backToDefault()">Quay lại</button>
+            <div class="card" id="rsvp">
+                <h2>Bạn sẽ</h2>
+                <h2>tham dự chứ?</h2>
+                <p>Dành chút thời gian để xác nhận tham dự giúp <strong>Ngọc & Long</strong> nhé!</p>
+                <form id="rsvp-form">
+                    <div class="rsvp-buttons">
+                        <input type="radio" id="attend" name="attendance" value="CÓ" required checked>
+                        <label data-aos="fade-up" data-aos-delay="30" for="attend" class="btn-yes">Có</label>
+
+                        <input type="radio" id="decline" name="attendance" value="KHÔNG" required>
+                        <label data-aos="fade-up" data-aos-delay="300" for="decline" class="btn-no">Không</label>
+
+                        <input type="radio" id="maybe" name="attendance" value="CÓ THỂ" required>
+                        <label data-aos="fade-up" data-aos-delay="600" for="maybe" class="btn-maybe">Có thể</label>
+                    </div>
+
+                    <div class="message-section">
+                        <input data-aos="fade-right" data-aos-delay="800" type="text" name="name"
+                            placeholder="Tên của bạn" required>
+                        <input data-aos="fade-right" data-aos-delay="1000" type="text" name="phone"
+                            placeholder="Số điện thoại" required>
+                    </div>
+
+                    <button data-aos="zoom-in" data-aos-delay="1400" type="submit" class="btn-send">Xác nhận</button>
+                </form>
+                <svg onclick="backToDefault()" class="back-icon" xmlns="http://www.w3.org/2000/svg" width="30"
+                    height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-move-left-icon lucide-move-left">
+                    <path d="M6 8L2 12L6 16" />
+                    <path d="M2 12H22" />
+                </svg>
             </div>
             <div class="card" id="qrcode" style="background-color: salmon;">
                 <h2>Xác nhận tham dự</h2>
@@ -64,43 +122,69 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
-        console.log('tst')
         let currentCard = "card-default";
-    
+
+        // Khởi tạo trang dựa vào param trên URL
+        function initPage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const pageParam = urlParams.get("page");
+
+            if (pageParam && document.getElementById(pageParam)) {
+                currentCard = pageParam;
+            }
+
+            const activeCard = document.getElementById(currentCard);
+            if (activeCard) {
+                activeCard.classList.add("active");
+                gsap.set(activeCard, { display: "flex", opacity: 1, scale: 1 });
+            }
+        }
+
         // Hàm chuyển card
         function showCard(id) {
-          if (id === currentCard) return;
-    
-          let oldCard = document.getElementById(currentCard);
-          let newCard = document.getElementById(id);
-    
-          // fade out card cũ
-          gsap.to(oldCard, {
-            opacity: 0,
-            scale: 0.95,
-            duration: 0.4,
-            onComplete: () => {
-              oldCard.classList.remove("active");
-              gsap.set(oldCard, {opacity: 1, scale: 1, display: "none"});
-            }
-          });
-    
-          // fade in card mới
-          newCard.classList.add("active");
-          gsap.fromTo(newCard,
-            {opacity: 0, scale: 0.95, display: "flex"},
-            {opacity: 1, scale: 1, duration: 0.4}
-          );
-    
-          currentCard = id;
+            if (id === currentCard) return;
+
+            const oldCard = document.getElementById(currentCard);
+            const newCard = document.getElementById(id);
+
+            if (!newCard) return;
+
+            // fade out card cũ
+            gsap.to(oldCard, {
+                opacity: 0,
+                scale: 0.95,
+                duration: 0.4,
+                onComplete: () => {
+                    oldCard.classList.remove("active");
+                    gsap.set(oldCard, { opacity: 1, scale: 1, display: "none" });
+                }
+            });
+
+            // fade in card mới
+            newCard.classList.add("active");
+            gsap.fromTo(newCard,
+                { opacity: 0, scale: 0.95, display: "flex" },
+                { opacity: 1, scale: 1, duration: 0.4 }
+            );
+
+            // cập nhật biến và URL
+            currentCard = id;
+            const params = new URLSearchParams(window.location.search);
+            params.set("page", currentCard);
+            window.history.replaceState({}, "", `${window.location.pathname}?${params}`);
         }
-    
+
         // Hàm back về card mặc định
         function backToDefault() {
-          showCard("card-default");
+            showCard("card-default");
         }
+
+        // Khi DOM load xong thì khởi tạo
+        document.addEventListener("DOMContentLoaded", initPage);
     </script>
+
 </body>
 
 </html>
