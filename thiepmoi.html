@@ -30,7 +30,7 @@
                     <p class="text-3">forever</p>
                 </div>
                 <div class="letter-img">
-                    <img src="./images/g272.png" class="envelope shake-bottom" id="envelopeBtn" alt="Letter image">
+                    <img src="./images/g272.png" class="envelope shake-bottom" id="openVideoBtn" alt="Letter image">
 
                 </div>
                 <div class="main-text">
@@ -241,10 +241,13 @@
         <img id="previewImg" src="" alt="preview">
     </div>
     <!-- Overlay video -->
-    <div class="video-overlay" id="videoOverlay">
-        <div class="video-content" id="videoContent">
-        <button class="close-video-btn" id="closeVideoBtn">X</button>
-            <!-- iframe sẽ được chèn bằng JS -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-content">
+            <span class="close-video-btn">&times;</span>
+            <video id="weddingVideo" controls preload="metadata" poster="https://res.cloudinary.com/storehue/image/upload/f_jpg,w_600,h_400,c_fill/v1759302950/wedding/ngoc-long/60947eb92d4ea710fe5f_bjext7.jpg">
+            <source src="https://yenstudio.com.vn/media/videos/ngoc-long/THI%E1%BB%86P%20C%C6%AF%E1%BB%9AI%20ONLINE%20%C3%81NH%20NG%E1%BB%8CC.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
         </div>
     </div>
     <script>
@@ -301,31 +304,32 @@
         });
     </script>
     <script>
-        const envelopeBtn = document.getElementById("envelopeBtn");
-        const videoOverlay = document.getElementById("videoOverlay");
-        const videoContent = document.getElementById("videoContent");
-        const closeVideoBtn = document.getElementById("closeVideoBtn");
-        const videoId = "We9RvyWpMYY"; // Thay VIDEO_ID unlisted YouTube vào đây
+        const modal = document.getElementById("videoModal");
+        const openBtn = document.getElementById("openVideoBtn");
+        const closeVideoBtn = document.querySelector(".close-video-btn");
+        const video = document.getElementById("weddingVideo");
 
-        envelopeBtn.addEventListener("click", () => {
-            // document.body.classList.add("no-scroll");
-            videoOverlay.classList.add("active");
-            videoContent.innerHTML = `
-                <button class="close-video-btn" id="closeVideoBtn">X</button>
-                <iframe type="text/html" src="https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&modestbranding=1" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `;
-            document.getElementById("closeVideoBtn").addEventListener("click", closeVideo);
-        });
+        // mở video
+        openBtn.onclick = () => {
+            modal.style.display = "flex";
+            video.play();
+        };
 
-        function closeVideo() {
-            videoOverlay.classList.remove("active");
-            document.body.classList.remove("no-scroll");
-            videoContent.innerHTML = `<button class="close-video-btn" id="closeVideoBtn">X</button>`;
-        }
+        // đóng video
+        closeVideoBtn.onclick = () => {
+            modal.style.display = "none";
+            video.pause();
+            video.currentTime = 0; // reset về đầu
+        };
+
+        // click ngoài khung cũng đóng
+        window.onclick = (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+                video.pause();
+                video.currentTime = 0;
+            }
+        };
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
