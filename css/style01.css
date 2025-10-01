@@ -614,13 +614,14 @@ body {
 .video-content {
     position: relative;
     width: 100%;
-    max-width: 430px; /* nhỏ hơn vì dọc */
+    max-width: 430px; 
     margin: auto;
-    padding-top: 750px; 
+    height: 0;
+    padding-bottom: 177.78%;
+    overflow: hidden;
 }
 
 .video-content iframe {
-    padding: 5px;
     position: absolute;
     top: 0;
     left: 0;
@@ -647,7 +648,7 @@ body {
     .video-content {
         width: 100%;
         height: auto;
-        padding-top: 600px; 
+        padding-bottom: 168%; 
     }
 
     .close-btn {
