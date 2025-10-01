@@ -72,7 +72,6 @@ body {
 
 .container {
     max-width: 430px;
-    margin: 10px;
     width: 100%;
 }
 
@@ -108,6 +107,7 @@ body {
     color: var(--text-color);
     background-color: #fff;
     padding: 5px;
+    /* overflow-y: auto; */
 }
 
 .card.active {
@@ -384,11 +384,6 @@ body {
 }
 
 /* Preview overlay */
-
-.album-container.no-scroll {
-    overflow: hidden;
-}
-
 .blur {
     filter: blur(10px);
 }

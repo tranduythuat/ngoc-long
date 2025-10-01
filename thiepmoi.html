@@ -279,7 +279,7 @@
         // Nút close
         closeBtn.addEventListener('click', () => {
             previewOverlay.style.display = 'none';
-            albumCard.classList.remove('no-scroll'); 
+            // albumCard.classList.remove('no-scroll'); 
         });
 
         function getFullImageUrl(url) {
@@ -289,7 +289,7 @@
         // Đóng preview -> bật lại cuộn
         function closePreview() {
             previewOverlay.style.display = 'none';
-            albumCard.classList.remove('no-scroll'); // bật scroll lại
+            // albumCard.classList.remove('no-scroll'); 
         }
 
         // Click ra ngoài ảnh cũng đóng
@@ -311,9 +311,10 @@
             videoOverlay.classList.add("active");
             videoContent.innerHTML = `
                 <button class="close-video-btn" id="closeVideoBtn">X</button>
-                <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
-                       frameborder="0" 
-                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen>
+                <iframe src="https://www.youtube.com/shorts/${videoId}?autoplay=1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen
+                >
                 </iframe>
             `;
             document.getElementById("closeVideoBtn").addEventListener("click", closeVideo);
