@@ -70,6 +70,10 @@ body {
     background-color: gainsboro;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .container {
     max-width: 430px;
     width: 100%;
@@ -107,7 +111,6 @@ body {
     color: var(--text-color);
     background-color: #fff;
     padding: 5px;
-    /* overflow-y: auto; */
 }
 
 .card.active {

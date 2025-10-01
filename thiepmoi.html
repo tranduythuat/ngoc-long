@@ -311,7 +311,7 @@
             videoOverlay.classList.add("active");
             videoContent.innerHTML = `
                 <button class="close-video-btn" id="closeVideoBtn">X</button>
-                <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+                <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen
                 >
@@ -383,11 +383,13 @@
             const params = new URLSearchParams(window.location.search);
             params.set("page", currentCard);
             window.history.replaceState({}, "", `${window.location.pathname}?${params}`);
+            document.body.classList.add('modal-open');
         }
 
         // Hàm back về card mặc định
         function backToDefault() {
             showCard("card-default");
+            document.body.classList.remove('modal-open');
         }
 
         // Khi DOM load xong thì khởi tạo
