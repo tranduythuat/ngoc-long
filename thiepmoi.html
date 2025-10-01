@@ -307,14 +307,12 @@
         const videoId = "We9RvyWpMYY"; // Thay VIDEO_ID unlisted YouTube vào đây
 
         envelopeBtn.addEventListener("click", () => {
-            document.body.classList.add("no-scroll");
+            // document.body.classList.add("no-scroll");
             videoOverlay.classList.add("active");
             videoContent.innerHTML = `
                 <button class="close-video-btn" id="closeVideoBtn">X</button>
-                <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen
-                >
+                <iframe type="text/html" src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&start=1" 
+                    frameborder="0" allowfullscreen>
                 </iframe>
             `;
             document.getElementById("closeVideoBtn").addEventListener("click", closeVideo);
