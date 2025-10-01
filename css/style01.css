@@ -63,11 +63,12 @@
 
 body {
     font-family: "Georgia", serif;
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: 950px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-color: gainsboro;
+    background-color: rgb(84, 39, 39);
 }
 
 body.modal-open {
@@ -332,21 +333,19 @@ body.modal-open {
     background-position: bottom;
     background-size: contain;
     background-repeat: no-repeat;
-    overflow-y: auto;
 }
 
 /* Webkit browsers (Chrome, Edge, Safari) */
-#album::-webkit-scrollbar {
+#album .album-container::-webkit-scrollbar {
     width: 8px;
 }
 
-#album::-webkit-scrollbar-thumb {
+#album .album-container::-webkit-scrollbar-thumb {
     background: #979797b3;
     border-radius: 10px;
 }
 
 #album h2 {
-    padding: 20px 0;
     font-family: 'BEAUTIQUEDISPLAY', sans-serif;
     font-size: 46px;
     font-weight: 300;
@@ -358,6 +357,7 @@ body.modal-open {
     -ms-flex-wrap: wrap; /* IE 10 */
     flex-wrap: wrap;
     padding-bottom: 100px;
+    overflow-y: auto;
 }
 
 

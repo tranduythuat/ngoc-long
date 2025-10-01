@@ -381,13 +381,13 @@
             const params = new URLSearchParams(window.location.search);
             params.set("page", currentCard);
             window.history.replaceState({}, "", `${window.location.pathname}?${params}`);
-            document.body.classList.add('modal-open');
+            // document.body.classList.add('modal-open');
         }
 
         // Hàm back về card mặc định
         function backToDefault() {
             showCard("card-default");
-            document.body.classList.remove('modal-open');
+            // document.body.classList.remove('modal-open');
         }
 
         // Khi DOM load xong thì khởi tạo
