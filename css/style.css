@@ -50,6 +50,15 @@
 }
 
 
+@font-face {
+    font-family: "PinyonScript-Regular";
+    src: url("../fonts/PinyonScript-Regular.woff2") format("woff2"),
+        url("../fonts/PinyonScript-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 :root {
     --background-color: #f5f8edff;
     --text-color: #787936ff;
@@ -526,9 +535,20 @@ body.modal-open {
     padding-top: 40px;
 }
 
+#qrcode p {
+    font-family: 'PinyonScript-Regular', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
 #qrcode .qrcode-box {
     width: 50%;
-    margin: 20px 0;
+    margin: 5px 0;
+}
+
+#qrcode .husband-name {
+    margin-top: 40px;
+    margin-bottom: 10px;
 }
 
 #qrcode .qrcode-box img {
