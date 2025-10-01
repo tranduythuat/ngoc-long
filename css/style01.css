@@ -68,7 +68,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-color: rgb(84, 39, 39);
+    background-color: rgba(195, 211, 196, 0.854);
 }
 
 body.modal-open {
