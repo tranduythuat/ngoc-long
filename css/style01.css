@@ -620,7 +620,7 @@ body.modal-open {
     max-width: 430px; 
     margin: auto;
     height: 0;
-    padding-bottom: 177.78%;
+    /* padding-bottom: 50%; */
     overflow: hidden;
 }
 
@@ -647,6 +647,49 @@ body.modal-open {
     line-height: 1;
 }
 
+/* Desktop siêu lớn (TV, màn hình rộng > 1400px) */
+@media (min-width: 1401px) {
+    .video-content {
+        padding-bottom: 50%; 
+    }
+}
+
+/* Laptop lớn, desktop (1201px - 1400px) */
+@media (max-width: 1400px) {
+    .video-content {
+        padding-bottom: 64%; 
+    }
+}
+
+/* Tablet ngang & Laptop nhỏ (769px - 992px) */
+@media (max-width: 992px) {
+    .video-content {
+        padding-bottom: 77%; 
+    }
+}
+
+/* Tablet nhỏ (577px - 768px) */
+@media (max-width: 768px) {
+    .video-content {
+        padding-bottom: 100%; 
+    }
+}
+
+/* Mobile lớn & Phablet (481px - 576px) */
+@media (max-width: 576px) {
+    .video-content {
+        padding-bottom: 132%; 
+    }
+}
+
+/* Mobile phổ biến (điện thoại đứng dọc, 361px - 480px) */
+@media (max-width: 480px) {
+  .video-content {
+        padding-bottom: 160%; 
+    }
+}
+
+/* Mobile nhỏ (điện thoại rất nhỏ, dưới 360px) */
 @media (max-width: 375px) {
     .video-content {
         width: 100%;
