@@ -11,7 +11,8 @@
     <meta property="og:title" content="Ngọc - Long" />
     <meta property="og:description" content="Ánh Ngọc & Hoàng Long" />
    
-    <meta property="og:image" content="https://res.cloudinary.com/storehue/image/upload/f_jpg,w_600,h_400,c_fill,g_north/v1759249997/wedding/ngoc-long/Tranh_Ve_mnjcv6.png" />
+    <meta property="og:image" content="https://res.cloudinary.com/storehue/image/upload/f_jpg,w_600,h_400,c_fill/v1759302950/wedding/ngoc-long/60947eb92d4ea710fe5f_bjext7.jpg">
+    <!-- <meta property="og:image" content="https://res.cloudinary.com/storehue/image/upload/f_jpg,w_600,h_400,c_fill,g_north/v1759249997/wedding/ngoc-long/Tranh_Ve_mnjcv6.png" /> -->
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="400" />
 
@@ -311,8 +312,10 @@
             videoOverlay.classList.add("active");
             videoContent.innerHTML = `
                 <button class="close-video-btn" id="closeVideoBtn">X</button>
-                <iframe type="text/html" src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&start=1" 
-                    frameborder="0" allowfullscreen>
+                <iframe type="text/html" src="https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&modestbranding=1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
                 </iframe>
             `;
             document.getElementById("closeVideoBtn").addEventListener("click", closeVideo);
